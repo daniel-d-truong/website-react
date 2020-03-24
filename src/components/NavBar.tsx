@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {createUseStyles} from 'react-jss';
 
 const createTransitions: string | any = () => {
@@ -63,10 +63,18 @@ const useStyles = createUseStyles({
             }
         }
     }, 
+    visible: {
+        opacity: 1
+    }, 
+    invisible: {
+        opacity: 0
+    }
 });
 
+// Functional component.
 const NavBar: React.FC = () => {
     const classes = useStyles();
+    const [loaded, setLoaded] = useState(false);
 
     const tabNames = [
         'Welcome',
@@ -79,8 +87,12 @@ const NavBar: React.FC = () => {
 
     const navList = tabNames.map( (tabName, key) => {
         const id = "#".concat(tabName.split(" ")[0]);
-        return (<li key={key}><a href={id}>{tabName}</a></li>)
+        return (<li key={key} className={ loaded ? classes.visible : classes.invisible }><a href={id}>{tabName}</a></li>)
     });
+
+    useEffect(() => {
+        setLoaded(true);
+    }, [])
 
     return (
         <section className={classes.sidebar}>
