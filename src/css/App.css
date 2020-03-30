@@ -1,5 +1,13 @@
 body {
     color: rgba(255, 255, 255, 0.55);
-
     font-family: 'Overpass', Helvetica, sans-serif;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+
+.photo {
+    background-image: url("../images/daniel-canada-best.jpg");
+    background-size: 125% auto;
+    background-position: right center;
+    background-repeat: no-repeat;
 }
